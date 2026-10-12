@@ -1013,11 +1013,21 @@ main,.container,.home-showcase,.home-slider,.home-slide,.home-slide-content,.foo
 }
 
 @media(max-width:360px){
-  .home-slider{height:calc(var(--mobile-hero-image-h) + 338px)}
+  /* Keep both hero CTA buttons on the same row on narrow phones.
+     The previous one-column override made the second WhatsApp button
+     fall below the fixed slider height and get clipped. */
+  .home-slider{height:calc(var(--mobile-hero-image-h) + 350px)}
   .home-slide-content h1,
   .home-slide-content h2{font-size:1.28rem!important}
-  .home-slide-content .actions{grid-template-columns:1fr}
-  .home-slide-content .actions .btn{min-height:36px}
+  .home-slide-content .actions{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:7px;
+  }
+  .home-slide-content .actions .btn{
+    min-height:38px;
+    padding:7px 6px;
+    font-size:.68rem;
+  }
   .home-trust-grid>div,.home-trust-grid>a{min-width:108px}
 }
 
